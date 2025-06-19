@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'corsheaders',
+    'rest_framework.authtoken',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -166,3 +168,13 @@ REST_FRAMEWORK = {
 
 # Allow all origins (development only!)
 CORS_ALLOW_ALL_ORIGINS = True
+AUTH_USER_MODEL = 'api.CustomUser'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+}
